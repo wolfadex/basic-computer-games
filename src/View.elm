@@ -3,7 +3,12 @@ module View exposing (..)
 import Element exposing (Attribute, Color, Element)
 import Element.Background as Background
 import Element.Font as Font
+import Element.Input
 import Route exposing (Route(..))
+
+
+
+-- LAYOUT
 
 
 header : String -> Element msg
@@ -36,10 +41,15 @@ header title =
 body : List (Element msg) -> Element msg
 body =
     Element.column
-        [ Element.width Element.fill
+        [ Element.width (Element.fill |> Element.maximum 600)
         , Element.height Element.fill
         , Element.padding 16
+        , Element.centerX
         ]
+
+
+
+-- ELEMENTS
 
 
 link : List (Attribute msg) -> { label : Element msg, url : String } -> Element msg
@@ -62,9 +72,38 @@ newTabLink attrs =
         )
 
 
+button : List (Attribute msg) -> { onPress : Maybe msg, label : Element msg } -> Element msg
+button attrs config =
+    Element.Input.button
+        ([ Element.paddingXY 16 8 ] ++ attrs)
+        config
+
+
+
+-- STYLES
+
+
+buttonPrimary : List (Element.Attr decorative msg)
+buttonPrimary =
+    [ Background.color green
+    , Font.color paperWhite
+    ]
+
+
+buttonSecondary : List (Element.Attr decorative msg)
+buttonSecondary =
+    [ Background.color linkBlue
+    , Font.color paperWhite
+    ]
+
+
+
+-- COLOR
+
+
 paperWhite : Color
 paperWhite =
-    Element.rgb 0.85 0.85 0.7
+    Element.rgb255 0xF9 0xFB 0xFF
 
 
 green : Color

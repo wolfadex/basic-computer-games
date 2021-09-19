@@ -142,18 +142,15 @@ view model =
 viewStart : Element Msg
 viewStart =
     column
-        []
+        [ spacing 64, width fill ]
         [ paragraph
             []
             [ text instructions ]
-        , row
-            []
-            [ Input.button
-                []
-                { label = text "New Game"
-                , onPress = Just NewGame
-                }
-            ]
+        , View.button
+            (centerX :: View.buttonPrimary)
+            { label = text "New Game"
+            , onPress = Just NewGame
+            }
         ]
 
 
@@ -205,15 +202,15 @@ viewDeal model =
             }
         , row
             [ spacing 16 ]
-            [ Input.button
-                []
+            [ View.button
+                (alignTop :: View.buttonSecondary)
                 { label = text "Pass"
                 , onPress = Just SkipBet
                 }
             , column
                 []
-                [ Input.button
-                    []
+                [ View.button
+                    View.buttonPrimary
                     { label = text "Bet"
                     , onPress =
                         case betError of
@@ -247,15 +244,15 @@ viewShow model =
         , Card.viewCard model.nextCard
         , text ("$" ++ String.fromInt model.money ++ " remaining")
         , if model.money > 0 then
-            Input.button
-                []
+            View.button
+                View.buttonPrimary
                 { label = text "Deal"
                 , onPress = Just DealNext
                 }
 
           else
-            Input.button
-                []
+            View.button
+                View.buttonPrimary
                 { label = text "New Game"
                 , onPress = Just NewGame
                 }
