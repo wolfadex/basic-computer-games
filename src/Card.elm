@@ -1,4 +1,4 @@
-module Card exposing (..)
+module Card exposing (Card, Deck, Face(..), Suit(..), compareCards, newDeck, shuffleDeck, viewCard, viewCardBack)
 
 import Element exposing (Color, Element)
 import Element.Background

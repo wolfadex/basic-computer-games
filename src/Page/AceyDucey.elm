@@ -1,12 +1,9 @@
 module Page.AceyDucey exposing (Model, Msg, init, update, view)
 
-import Animator
-import Animator.Inline
-import Card exposing (Card, Deck, Face(..), compareCards)
+import Card exposing (Card, Deck, compareCards)
 import Element exposing (..)
 import Element.Input as Input
 import Random
-import Route exposing (Route(..))
 import View
 
 

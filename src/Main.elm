@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Main exposing (Flags, Model, Msg, Page, main)
 
 {-| Games from the book Basic Computer Games found in the archive <https://www.atariarchives.org/basicgames/index.php>
 -}
@@ -11,7 +11,6 @@ import Page.Home as Home
 import Page.NotFound as NotFound
 import Route exposing (Route(..))
 import Url exposing (Url)
-import Url.Parser exposing ((</>))
 
 
 main : Program Flags Model Msg
@@ -43,7 +42,7 @@ type Page
 
 
 init : Flags -> Url -> Navigation.Key -> ( Model, Cmd Msg )
-init flags url key =
+init _ url key =
     ( { key = key
       , page =
             url
@@ -55,13 +54,12 @@ init flags url key =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.none
 
 
 type Msg
-    = NoOp
-    | ChangedUrl Url
+    = ChangedUrl Url
     | ClickedLink UrlRequest
     | AceyDuceyMessage AceyDucey.Msg
 

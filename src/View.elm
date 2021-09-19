@@ -1,10 +1,10 @@
-module View exposing (..)
+module View exposing (body, button, buttonPrimary, buttonSecondary, green, header, link, newTabLink, paperWhite)
 
 import Element exposing (Attribute, Color, Element)
 import Element.Background as Background
 import Element.Font as Font
 import Element.Input
-import Route exposing (Route(..))
+import Route
 
 
 
@@ -75,7 +75,7 @@ newTabLink attrs =
 button : List (Attribute msg) -> { onPress : Maybe msg, label : Element msg } -> Element msg
 button attrs config =
     Element.Input.button
-        ([ Element.paddingXY 16 8 ] ++ attrs)
+        (Element.paddingXY 16 8 :: attrs)
         config
 
 

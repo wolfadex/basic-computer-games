@@ -1,4 +1,4 @@
-module Route exposing (..)
+module Route exposing (Route(..), fromUrl, toString)
 
 import Url exposing (Url)
 import Url.Parser
@@ -30,7 +30,7 @@ toString route =
         Home ->
             "/"
 
-        NotFound url ->
+        NotFound _ ->
             "/"
 
         AceyDucey ->

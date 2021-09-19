@@ -1,4 +1,4 @@
-module Page.NotFound exposing (..)
+module Page.NotFound exposing (view)
 
 import Element exposing (..)
 import Url exposing (Url)
