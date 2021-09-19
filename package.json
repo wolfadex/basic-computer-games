@@ -1,0 +1,15 @@
+{
+  "name": "basic-computer-games",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "dev": "elm-live src/Main.elm --pushstate -- --debug"
+  },
+  "author": "Wolfgang Schuster",
+  "devDependencies": {
+    "elm": "^0.19.1-5",
+    "elm-format": "^0.8.5",
+    "elm-live": "^4.0.2",
+    "esbuild": "^0.12.28"
+  }
+}
