@@ -184,11 +184,11 @@ viewDeal model =
         [ spacing 16 ]
         [ row
             []
-            [ Card.viewCardBack
+            [ Card.viewCardBack "deck of cards"
             , Card.viewCard model.leftCard
             , Card.viewCard model.rightCard
             ]
-        , Card.viewCardBack
+        , Card.viewCardBack "next card"
         , text ("$" ++ String.fromInt model.money ++ " remaining")
         , Input.text
             []
@@ -234,7 +234,7 @@ viewShow model =
         [ spacing 16 ]
         [ row
             []
-            [ Card.viewCardBack
+            [ Card.viewCardBack "deck of cards"
             , Card.viewCard model.leftCard
             , Card.viewCard model.rightCard
             ]

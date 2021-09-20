@@ -3,6 +3,8 @@ module Card exposing (Card, Deck, Face(..), Suit(..), compareCards, newDeck, shu
 import Element exposing (Color, Element)
 import Element.Background
 import Element.Font
+import Element.Region
+import Html.Attributes
 import Random exposing (Generator)
 import Random.List
 
@@ -85,182 +87,272 @@ type alias Card =
 
 viewCard : Card -> Element msg
 viewCard card =
-    viewWrapper <|
-        case ( card.face, card.suit ) of
-            -- Spades
-            ( Ace, Spade ) ->
-                ( Element.rgb 0 0 0, "🂡" )
+    viewWrapper
+        { content =
+            case ( card.face, card.suit ) of
+                -- Spades
+                ( Ace, Spade ) ->
+                    "🂡"
 
-            ( Two, Spade ) ->
-                ( Element.rgb 0 0 0, "🂢" )
+                ( Two, Spade ) ->
+                    "🂢"
 
-            ( Three, Spade ) ->
-                ( Element.rgb 0 0 0, "🂣" )
+                ( Three, Spade ) ->
+                    "🂣"
 
-            ( Four, Spade ) ->
-                ( Element.rgb 0 0 0, "🂤" )
+                ( Four, Spade ) ->
+                    "🂤"
 
-            ( Five, Spade ) ->
-                ( Element.rgb 0 0 0, "🂥" )
+                ( Five, Spade ) ->
+                    "🂥"
 
-            ( Six, Spade ) ->
-                ( Element.rgb 0 0 0, "🂦" )
+                ( Six, Spade ) ->
+                    "🂦"
 
-            ( Seven, Spade ) ->
-                ( Element.rgb 0 0 0, "🂧" )
+                ( Seven, Spade ) ->
+                    "🂧"
 
-            ( Eight, Spade ) ->
-                ( Element.rgb 0 0 0, "🂨" )
+                ( Eight, Spade ) ->
+                    "🂨"
 
-            ( Nine, Spade ) ->
-                ( Element.rgb 0 0 0, "🂩" )
+                ( Nine, Spade ) ->
+                    "🂩"
 
-            ( Ten, Spade ) ->
-                ( Element.rgb 0 0 0, "🂪" )
+                ( Ten, Spade ) ->
+                    "🂪"
 
-            ( Jack, Spade ) ->
-                ( Element.rgb 0 0 0, "🂫" )
+                ( Jack, Spade ) ->
+                    "🂫"
 
-            ( Queen, Spade ) ->
-                ( Element.rgb 0 0 0, "🂭" )
+                ( Queen, Spade ) ->
+                    "🂭"
 
-            ( King, Spade ) ->
-                ( Element.rgb 0 0 0, "🂮" )
+                ( King, Spade ) ->
+                    "🂮"
 
-            -- Hearts
-            ( Ace, Heart ) ->
-                ( Element.rgb 1 0 0, "🂱" )
+                -- Hearts
+                ( Ace, Heart ) ->
+                    "🂱"
 
-            ( Two, Heart ) ->
-                ( Element.rgb 1 0 0, "🂲" )
+                ( Two, Heart ) ->
+                    "🂲"
 
-            ( Three, Heart ) ->
-                ( Element.rgb 1 0 0, "🂳" )
+                ( Three, Heart ) ->
+                    "🂳"
 
-            ( Four, Heart ) ->
-                ( Element.rgb 1 0 0, "🂴" )
+                ( Four, Heart ) ->
+                    "🂴"
 
-            ( Five, Heart ) ->
-                ( Element.rgb 1 0 0, "🂵" )
+                ( Five, Heart ) ->
+                    "🂵"
 
-            ( Six, Heart ) ->
-                ( Element.rgb 1 0 0, "🂶" )
+                ( Six, Heart ) ->
+                    "🂶"
 
-            ( Seven, Heart ) ->
-                ( Element.rgb 1 0 0, "🂷" )
+                ( Seven, Heart ) ->
+                    "🂷"
 
-            ( Eight, Heart ) ->
-                ( Element.rgb 1 0 0, "🂸" )
+                ( Eight, Heart ) ->
+                    "🂸"
 
-            ( Nine, Heart ) ->
-                ( Element.rgb 1 0 0, "🂹" )
+                ( Nine, Heart ) ->
+                    "🂹"
 
-            ( Ten, Heart ) ->
-                ( Element.rgb 1 0 0, "🂺" )
+                ( Ten, Heart ) ->
+                    "🂺"
 
-            ( Jack, Heart ) ->
-                ( Element.rgb 1 0 0, "🂻" )
+                ( Jack, Heart ) ->
+                    "🂻"
 
-            ( Queen, Heart ) ->
-                ( Element.rgb 1 0 0, "🂽" )
+                ( Queen, Heart ) ->
+                    "🂽"
 
-            ( King, Heart ) ->
-                ( Element.rgb 1 0 0, "🂾" )
+                ( King, Heart ) ->
+                    "🂾"
 
-            -- Clubs
-            ( Ace, Club ) ->
-                ( Element.rgb 0 0 0, "🃑" )
+                -- Clubs
+                ( Ace, Club ) ->
+                    "🃑"
 
-            ( Two, Club ) ->
-                ( Element.rgb 0 0 0, "🃒" )
+                ( Two, Club ) ->
+                    "🃒"
 
-            ( Three, Club ) ->
-                ( Element.rgb 0 0 0, "🃓" )
+                ( Three, Club ) ->
+                    "🃓"
 
-            ( Four, Club ) ->
-                ( Element.rgb 0 0 0, "🃔" )
+                ( Four, Club ) ->
+                    "🃔"
 
-            ( Five, Club ) ->
-                ( Element.rgb 0 0 0, "🃕" )
+                ( Five, Club ) ->
+                    "🃕"
 
-            ( Six, Club ) ->
-                ( Element.rgb 0 0 0, "🃖" )
+                ( Six, Club ) ->
+                    "🃖"
 
-            ( Seven, Club ) ->
-                ( Element.rgb 0 0 0, "🃗" )
+                ( Seven, Club ) ->
+                    "🃗"
 
-            ( Eight, Club ) ->
-                ( Element.rgb 0 0 0, "🃘" )
+                ( Eight, Club ) ->
+                    "🃘"
 
-            ( Nine, Club ) ->
-                ( Element.rgb 0 0 0, "🃙" )
+                ( Nine, Club ) ->
+                    "🃙"
 
-            ( Ten, Club ) ->
-                ( Element.rgb 0 0 0, "🃚" )
+                ( Ten, Club ) ->
+                    "🃚"
 
-            ( Jack, Club ) ->
-                ( Element.rgb 0 0 0, "🃛" )
+                ( Jack, Club ) ->
+                    "🃛"
 
-            ( Queen, Club ) ->
-                ( Element.rgb 0 0 0, "🃝" )
+                ( Queen, Club ) ->
+                    "🃝"
 
-            ( King, Club ) ->
-                ( Element.rgb 0 0 0, "🃞" )
+                ( King, Club ) ->
+                    "🃞"
 
-            -- Diamonds
-            ( Ace, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃁" )
+                -- Diamonds
+                ( Ace, Diamond ) ->
+                    "🃁"
 
-            ( Two, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃂" )
+                ( Two, Diamond ) ->
+                    "🃂"
 
-            ( Three, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃃" )
+                ( Three, Diamond ) ->
+                    "🃃"
 
-            ( Four, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃄" )
+                ( Four, Diamond ) ->
+                    "🃄"
 
-            ( Five, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃅" )
+                ( Five, Diamond ) ->
+                    "🃅"
 
-            ( Six, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃆" )
+                ( Six, Diamond ) ->
+                    "🃆"
 
-            ( Seven, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃇" )
+                ( Seven, Diamond ) ->
+                    "🃇"
 
-            ( Eight, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃈" )
+                ( Eight, Diamond ) ->
+                    "🃈"
 
-            ( Nine, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃉" )
+                ( Nine, Diamond ) ->
+                    "🃉"
 
-            ( Ten, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃊" )
+                ( Ten, Diamond ) ->
+                    "🃊"
 
-            ( Jack, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃋" )
+                ( Jack, Diamond ) ->
+                    "🃋"
 
-            ( Queen, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃍" )
+                ( Queen, Diamond ) ->
+                    "🃍"
 
-            ( King, Diamond ) ->
-                ( Element.rgb 1 0 0, "🃎" )
-
-
-viewCardBack : Element msg
-viewCardBack =
-    viewWrapper ( Element.rgb 0.65 0 1, "🂠" )
+                ( King, Diamond ) ->
+                    "🃎"
+        , color = getCardColor card
+        , accessibleName = getCardName card
+        }
 
 
-viewWrapper : ( Color, String ) -> Element msg
-viewWrapper ( color, cardText ) =
+getCardName : Card -> String
+getCardName { suit, face } =
+    getFaceName face ++ " of " ++ getSuitNamePlural suit
+
+
+getFaceName : Face -> String
+getFaceName face =
+    case face of
+        Ace ->
+            "Ace"
+
+        Two ->
+            "Two"
+
+        Three ->
+            "Three"
+
+        Four ->
+            "Four"
+
+        Five ->
+            "Five"
+
+        Six ->
+            "Six"
+
+        Seven ->
+            "Seven"
+
+        Eight ->
+            "Eight"
+
+        Nine ->
+            "Nine"
+
+        Ten ->
+            "Ten"
+
+        Jack ->
+            "Jack"
+
+        Queen ->
+            "Queen"
+
+        King ->
+            "King"
+
+
+getSuitNamePlural : Suit -> String
+getSuitNamePlural suit =
+    case suit of
+        Spade ->
+            "Spades"
+
+        Club ->
+            "Clubs"
+
+        Heart ->
+            "Hearts"
+
+        Diamond ->
+            "Diamonds"
+
+
+getCardColor : Card -> Color
+getCardColor { suit } =
+    case suit of
+        Spade ->
+            Element.rgb 0 0 0
+
+        Club ->
+            Element.rgb 0 0 0
+
+        Heart ->
+            Element.rgb 1 0 0
+
+        Diamond ->
+            Element.rgb 1 0 0
+
+
+viewCardBack : String -> Element msg
+viewCardBack accessibleName =
+    viewWrapper
+        { color = Element.rgb 0.65 0 1
+        , content = "🂠"
+        , accessibleName = accessibleName
+        }
+
+
+viewWrapper : { color : Color, content : String, accessibleName : String } -> Element msg
+viewWrapper { color, content, accessibleName } =
     Element.el
         [ Element.Font.size 128
         , Element.Font.color color
         , Element.Background.color (Element.rgb 1 1 1)
+        , Element.htmlAttribute (Html.Attributes.tabindex 0)
+        , Element.Region.description accessibleName
         ]
-        (Element.text cardText)
+        (Element.text content)
 
 
 compareCards : Card -> Card -> Order

@@ -3,6 +3,7 @@ module View exposing (body, button, buttonPrimary, buttonSecondary, green, heade
 import Element exposing (Attribute, Color, Element)
 import Element.Background as Background
 import Element.Font as Font
+import Element.Region as Region
 import Element.Input
 import Route
 
@@ -27,6 +28,7 @@ header title =
                 (Element.text title)
             )
         , Background.color green
+        , Region.navigation
         ]
         [ link
             [ Element.alignLeft

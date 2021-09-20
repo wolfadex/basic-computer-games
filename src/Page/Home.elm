@@ -4,6 +4,7 @@ import Element exposing (..)
 import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
+import Element.Region as Region
 import Route exposing (Route(..))
 import View
 
@@ -59,11 +60,15 @@ view =
                             }
                         , text "."
                         ]
-                    , View.link
-                        []
-                        { label = text "Acey Ducey"
-                        , url = Route.toString AceyDucey
-                        }
+                    , wrappedRow
+                        [ Region.navigation
+                        ]
+                        [ View.link
+                            []
+                            { label = text "Acey Ducey"
+                            , url = Route.toString AceyDucey
+                            }
+                        ]
                     ]
                 ]
             ]
