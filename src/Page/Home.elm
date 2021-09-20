@@ -58,6 +58,12 @@ view =
                             { label = text "Elm"
                             , url = "https://elm-lang.org/"
                             }
+                        , text ". If you'd like to contribute, new additions are welcome at "
+                        , View.newTabLink
+                            []
+                            { label = text "github.com/wolfadex/basic-computer-games"
+                            , url = "https://github.com/wolfadex/basic-computer-games"
+                            }
                         , text "."
                         ]
                     , wrappedRow
